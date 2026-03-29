@@ -243,7 +243,6 @@ export const popularTV: Movie[] = [
 // Top Rated Movies
 export const topRatedMovies: Movie[] = [
   { id: 278, title: "The Shawshank Redemption", poster: getImageUrl("/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"), rating: 8.7, release_date: "1994-09-23", mediaType: "movie", slug: "/movie/278" },
-  { id: 238, title: "The Godfather", poster: getImageUrl("/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"), rating: 8.7, release_date: "1972-03-14", mediaType: "movie", slug: "/movie/238" },
   { id: 240, title: "The Godfather Part II", poster: getImageUrl("/hek3koDUyRQK7BoKZ0U5qpu5iqG.jpg"), rating: 8.6, release_date: "1974-12-20", mediaType: "movie", slug: "/movie/240" },
   { id: 424, title: "Schindler's List", poster: getImageUrl("/sF1sqRrxUXeA7Fn9JXpG1q8D9n8.jpg"), rating: 8.6, release_date: "1993-12-15", mediaType: "movie", slug: "/movie/424" },
   { id: 389, title: "12 Angry Men", poster: getImageUrl("/ow3wq89qrTRiGv87eFVv3wD6KJ.jpg"), rating: 8.5, release_date: "1957-04-10", mediaType: "movie", slug: "/movie/389" },
@@ -329,7 +328,6 @@ export const searchMovies: Movie[] = [
   // More Movies
   { id: 155, title: "Inception", poster: getImageUrl("/9gk7ad.jpg"), rating: 8.4, release_date: "2010-07-15", mediaType: "movie", slug: "/movie/155" },
   { id: 157336, title: "Interstellar", poster: getImageUrl("/gEU2Q.jpg"), rating: 8.4, release_date: "2014-11-05", mediaType: "movie", slug: "/movie/157336" },
-  { id: 238, title: "The Godfather", poster: getImageUrl("/3bhj.jpg"), rating: 8.7, release_date: "1972-03-14", mediaType: "movie", slug: "/movie/238" },
   { id: 278, title: "The Shawshank Redemption", poster: getImageUrl("/9cqN.jpg"), rating: 8.7, release_date: "1994-09-22", mediaType: "movie", slug: "/movie/278" },
   { id: 550, title: "Fight Club", poster: getImageUrl("/pB8B.jpg"), rating: 8.4, release_date: "1999-10-15", mediaType: "movie", slug: "/movie/550" },
   { id: 13, title: "Forrest Gump", poster: getImageUrl("/arw2.jpg"), rating: 8.5, release_date: "1994-07-06", mediaType: "movie", slug: "/movie/13" },
@@ -470,7 +468,6 @@ export const searchMovies: Movie[] = [
   { id: 14283, title: "The Pursuit of Happyness", poster: getImageUrl("/n7V8C9X0Z1A2S3D4F5G6H7J8.jpg"), rating: 7.9, release_date: "2006-12-14", mediaType: "movie", slug: "/movie/14283" },
   { id: 5876, title: "The Fault in Our Stars", poster: getImageUrl("/o8C9X0Z1A2S3D4F5G6H7J8K9.jpg"), rating: 7.6, release_date: "2014-06-04", mediaType: "movie", slug: "/movie/5876" },
   { id: 628241, title: "The Shawshank Redemption", poster: getImageUrl("/9cqN.jpg"), rating: 8.7, release_date: "1994-09-22", mediaType: "movie", slug: "/movie/628241" },
-  { id: 238, title: "The Godfather", poster: getImageUrl("/3bhj.jpg"), rating: 8.7, release_date: "1972-03-14", mediaType: "movie", slug: "/movie/238" },
   { id: 240, title: "The Godfather Part II", poster: getImageUrl("/amwomTuy7mK1WsL2PIx1OW793cG.jpg"), rating: 8.6, release_date: "1974-12-20", mediaType: "movie", slug: "/movie/240" },
   { id: 637, title: "Life Is Beautiful", poster: getImageUrl("/74h.jpg"), rating: 8.5, release_date: "1997-12-20", mediaType: "movie", slug: "/movie/637" },
   { id: 324857, title: "Spider-Man: Into the Spider-Verse", poster: getImageUrl("/ii8.jpg"), rating: 8.4, release_date: "2018-12-06", mediaType: "movie", slug: "/movie/324857" },
@@ -1807,7 +1804,6 @@ export const searchMovies: Movie[] = [
   { id: 100972, title: "The Last Picture Show", poster: getImageUrl("/lastpicture1971.jpg"), rating: 7.9, release_date: "1971-10-22", mediaType: "movie", slug: "/movie/100972" },
   { id: 100973, title: "Fiddler on the Roof", poster: getImageUrl("/fiddler1971.jpg"), rating: 7.9, release_date: "1971-11-03", mediaType: "movie", slug: "/movie/100973" },
   { id: 100974, title: "Cabaret", poster: getImageUrl("/cabaret1972.jpg"), rating: 7.8, release_date: "1972-02-13", mediaType: "movie", slug: "/movie/100974" },
-  { id: 100975, title: "The Godfather", poster: getImageUrl("/godfather1972.jpg"), rating: 9.2, release_date: "1972-03-24", mediaType: "movie", slug: "/movie/100975" },
   { id: 100976, title: "The Sting", poster: getImageUrl("/sting1973.jpg"), rating: 8.3, release_date: "1973-12-25", mediaType: "movie", slug: "/movie/100976" },
   { id: 100977, title: "The Exorcist", poster: getImageUrl("/exorcist1973.jpg"), rating: 7.8, release_date: "1973-12-26", mediaType: "movie", slug: "/movie/100977" },
   { id: 100978, title: "Chinatown", poster: getImageUrl("/chinatown1974.jpg"), rating: 8.2, release_date: "1974-06-20", mediaType: "movie", slug: "/movie/100978" },
