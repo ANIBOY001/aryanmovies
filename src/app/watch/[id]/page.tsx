@@ -9,10 +9,10 @@ import MovieCard from '@/components/MovieCard'
 import type { Movie } from '@/types/movie'
 
 const SERVERS = [
+  { name: 'Server 1 (Auto)', url: 'https://vidsrc.cc/embed/movie/' },
+  { name: 'Server 2', url: 'https://vidlink.pro/movie/' },
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
-  { name: 'Server 2', url: 'https://vidsrc.cc/embed/movie/' },
-  { name: 'Server 3', url: 'https://embed.su/embed/movie/' },
-  { name: 'Server 4', url: 'https://vidlink.pro/movie/' },
+  { name: 'Server 4', url: 'https://embed.su/embed/movie/' },
 ]
 
 export default function WatchPage() {
@@ -113,7 +113,7 @@ export default function WatchPage() {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">If one server does not work, try another. VidKing is recommended for best quality.</p>
+            <p className="text-text-muted text-xs mt-4">If one server does not work, try another. Server 1 & 2 have fewer ads. VidKing may have more ads but sometimes better quality.</p>
           </div>
 
           {isTvShow && (
