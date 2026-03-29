@@ -2,7 +2,7 @@ import { Movie } from '@/types/movie';
 
 const getImageUrl = (path: string, size: string = 'w342') => {
   if (path?.startsWith('http')) return path;
-  return `https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2F${size}${path}&output=webp&q=50&n=-1`;
+  return `https://image.tmdb.org/t/p/${size}${path}`;
 };
 
 // Additional Movies Part 7 - Action & Adventure Films (IDs 101351-101750)

@@ -1,25 +1,59 @@
 import { Movie } from '@/types/movie'
 import Link from 'next/link'
 import { Play, Plus, Star, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
 
 interface MovieCardProps {
   movie: Movie
 }
 
 export default function MovieCard({ movie }: MovieCardProps) {
-  const imageUrl = movie.poster || `https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw342${movie.poster_path}&output=webp&q=50&n=-1`
+  const [imgError, setImgError] = useState(false)
+  
+  // Build image URL - prefer direct TMDB, fallback to poster field
+  const getImageUrl = () => {
+    if (movie.poster?.includes('image.tmdb.org')) {
+      return movie.poster
+    }
+    if (movie.poster_path) {
+      return `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+    }
+    if (movie.poster) {
+      return movie.poster
+    }
+    return ''
+  }
+  
+  const imageUrl = getImageUrl()
+  const hasValidImage = imageUrl && !imgError
+  
+  // Debug: log what's happening
+  console.log(`Movie ${movie.title}: imageUrl=${imageUrl?.substring(0, 50)}, imgError=${imgError}, hasValid=${hasValidImage}`)
 
   return (
     <div className="movie-card group flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px]">
       <Link href={`/watch/${movie.id}`}>
         <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-secondary">
           {/* Poster Image */}
-          <img
-            src={imageUrl}
-            alt={movie.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            loading="lazy"
-          />
+          {hasValidImage ? (
+            <img
+              src={imageUrl}
+              alt={movie.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-indigo-900 p-4">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-xl bg-indigo-700 flex items-center justify-center border-2 border-indigo-400">
+                  <span className="text-3xl">🎬</span>
+                </div>
+                <p className="text-sm font-bold text-white line-clamp-2">{movie.title}</p>
+                <p className="text-xs text-indigo-300 mt-2">NO POSTER</p>
+              </div>
+            </div>
+          )}
 
           {/* Rating Badge */}
           <div className="absolute top-2 left-2 flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md">
