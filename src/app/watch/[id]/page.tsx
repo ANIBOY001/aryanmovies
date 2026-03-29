@@ -9,10 +9,10 @@ import MovieCard from '@/components/MovieCard'
 import type { Movie } from '@/types/movie'
 
 const SERVERS = [
+  { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
   { name: 'StreamTape', url: 'https://streamtape.com/e/' },
   { name: 'DoodStream', url: 'https://dood.la/e/' },
   { name: 'MixDrop', url: 'https://mixdrop.co/e/' },
-  { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
 ]
 
 export default function WatchPage() {
