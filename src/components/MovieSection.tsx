@@ -25,6 +25,11 @@ export default function MovieSection({ title, movies, seeMoreLink }: MovieSectio
     }
   }
 
+  const handleSeeMore = () => {
+    // Scroll right to show more content
+    scroll('right')
+  }
+
   if (!movies || movies.length === 0) return null
 
   return (
@@ -34,13 +39,13 @@ export default function MovieSection({ title, movies, seeMoreLink }: MovieSectio
           {title}
         </h2>
         {seeMoreLink && (
-          <Link 
-            href={seeMoreLink}
+          <button 
+            onClick={handleSeeMore}
             className="text-sm text-white/60 hover:text-white flex items-center gap-1 transition-colors"
           >
             See More
             <ChevronRight className="w-4 h-4" />
-          </Link>
+          </button>
         )}
       </div>
 
