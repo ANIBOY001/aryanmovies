@@ -1,0 +1,9 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ['image.tmdb.org', 'wsrv.nl', 'www.cineby.sc'],
+    unoptimized: true,
+  },
+}
+
+module.exports = nextConfig
