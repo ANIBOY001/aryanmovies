@@ -10,9 +10,9 @@ import type { Movie } from '@/types/movie'
 
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
-  { name: 'StreamTape', url: 'https://streamtape.com/e/' },
-  { name: 'DoodStream', url: 'https://dood.la/e/' },
-  { name: 'MixDrop', url: 'https://mixdrop.co/e/' },
+  { name: '2Embed', url: 'https://www.2embed.cc/embed/movie/' },
+  { name: 'VidLink', url: 'https://vidlink.pro/movie/' },
+  { name: 'AutoEmbed', url: 'https://autoembed.cc/embed/movie/' },
 ]
 
 export default function WatchPage() {
