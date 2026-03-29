@@ -6,6 +6,7 @@ import { additionalMoviesPart4 } from './additionalMoviesPart4'
 import { additionalMoviesPart5 } from './additionalMoviesPart5'
 import { additionalMoviesPart6 } from './additionalMoviesPart6'
 import { additionalMoviesPart7 } from './additionalMoviesPart7'
+import { additionalMoviesPart8 } from './additionalMoviesPart8'
 import { tvShows } from './tvShows'
 import { tvShowsPart2 } from './tvShowsPart2'
 import { tvShowsPart3 } from './tvShowsPart3'
@@ -1954,6 +1955,7 @@ export const allMovies: Movie[] = [
   ...additionalMoviesPart5,
   ...additionalMoviesPart6,
   ...additionalMoviesPart7,
+  ...additionalMoviesPart8,
   ...tvShows,
   ...tvShowsPart2,
   ...tvShowsPart3,
