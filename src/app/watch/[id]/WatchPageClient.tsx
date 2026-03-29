@@ -8,27 +8,20 @@ import { allMovies } from '@/data/movies'
 import MovieCard from '@/components/MovieCard'
 import type { Movie } from '@/types/movie'
 
-// Generate static params for all movies
-export function generateStaticParams() {
-  return allMovies.map((movie) => ({
-    id: movie.id.toString(),
-  }))
-}
-
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
 ]
 
-export default function WatchPage() {
-  const params = useParams()
+interface WatchPageClientProps {
+  movie: Movie
+}
+
+export default function WatchPageClient({ movie }: WatchPageClientProps) {
   const [currentServer, setCurrentServer] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [selectedSeason, setSelectedSeason] = useState(1)
   const [selectedEpisode, setSelectedEpisode] = useState(1)
   const [isTvShow, setIsTvShow] = useState(false)
-  
-  const movieId = params.id as string
-  const movie = allMovies.find((m: Movie) => m.id.toString() === movieId) || allMovies[0]
   
   useEffect(() => {
     if (movie.mediaType === 'tv') {
@@ -38,7 +31,6 @@ export default function WatchPage() {
 
   const getEmbedUrl = () => {
     let baseUrl = SERVERS[currentServer].url
-    // Replace 'movie' with 'tv' for TV shows
     if (isTvShow) {
       baseUrl = baseUrl.replace('/movie/', '/tv/')
       return baseUrl + movie.id + '/' + selectedSeason + '/' + selectedEpisode
@@ -103,7 +95,7 @@ export default function WatchPage() {
               <span className="px-1.5 py-0.5 bg-white/10 rounded text-xs">HD</span>
             </div>
             <p className="text-text-muted max-w-3xl">
-              Watch {movie.title} online for free. Enjoy high-quality streaming with multiple server options.
+              Watch {movie.title} online for free. Enjoy high-quality streaming.
             </p>
           </div>
 
