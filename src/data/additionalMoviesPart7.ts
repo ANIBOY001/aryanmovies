@@ -46,8 +46,6 @@ export const additionalMoviesPart7: Movie[] = [
   { id: 101386, title: "Basic Instinct", poster: getImageUrl("/basicinstinct1992.jpg"), rating: 7.0, release_date: "1992-03-20", mediaType: "movie", slug: "/movie/101386" },
   { id: 101387, title: "Sliver", poster: getImageUrl("/sliver1993.jpg"), rating: 5.0, release_date: "1993-05-21", mediaType: "movie", slug: "/movie/101387" },
   { id: 101388, title: "Showgirls", poster: getImageUrl("/showgirls1995.jpg"), rating: 4.8, release_date: "1995-09-22", mediaType: "movie", slug: "/movie/101388" },
-  { id: 101389, title: "Starship Troopers", poster: getImageUrl("/starshiptroopers1997.jpg"), rating: 7.3, release_date: "1997-11-07", mediaType: "movie", slug: "/movie/101389" },
-  { id: 101390, title: "Hollow Man", poster: getImageUrl("/hollowman2000.jpg"), rating: 6.0, release_date: "2000-08-04", mediaType: "movie", slug: "/movie/101390" },
   { id: 101391, title: "Black Book", poster: getImageUrl("/blackbook2006.jpg"), rating: 7.7, release_date: "2006-09-14", mediaType: "movie", slug: "/movie/101391" },
   { id: 101392, title: "Elle", poster: getImageUrl("/elle2016.jpg"), rating: 7.1, release_date: "2016-09-21", mediaType: "movie", slug: "/movie/101392" },
   { id: 101393, title: "Benedetta", poster: getImageUrl("/benedetta2021.jpg"), rating: 6.7, release_date: "2021-07-09", mediaType: "movie", slug: "/movie/101393" },

@@ -6,7 +6,6 @@ import { additionalMoviesPart4 } from './additionalMoviesPart4'
 import { additionalMoviesPart5 } from './additionalMoviesPart5'
 import { additionalMoviesPart6 } from './additionalMoviesPart6'
 import { additionalMoviesPart7 } from './additionalMoviesPart7'
-import { additionalMoviesPart8 } from './additionalMoviesPart8'
 import { tvShows } from './tvShows'
 import { tvShowsPart2 } from './tvShowsPart2'
 import { tvShowsPart3 } from './tvShowsPart3'
@@ -347,7 +346,6 @@ export const searchMovies: Movie[] = [
   { id: 497, title: "The Green Mile", poster: getImageUrl("/vel.jpg"), rating: 8.5, release_date: "1999-12-10", mediaType: "movie", slug: "/movie/497" },
   { id: 372058, title: "Your Name.", poster: getImageUrl("/q719.jpg"), rating: 8.6, release_date: "2016-08-26", mediaType: "movie", slug: "/movie/372058" },
   { id: 324857, title: "Spider-Man: Into the Spider-Verse", poster: getImageUrl("/ii8.jpg"), rating: 8.4, release_date: "2018-12-06", mediaType: "movie", slug: "/movie/324857" },
-  { id: 496243, title: "Parasite", poster: getImageUrl("/7Ii.jpg"), rating: 8.5, release_date: "2019-05-30", mediaType: "movie", slug: "/movie/496243" },
   { id: 398818, title: "Dunkirk", poster: getImageUrl("/bOX.jpg"), rating: 7.5, release_date: "2017-07-19", mediaType: "movie", slug: "/movie/398818" },
   { id: 335984, title: "Blade Runner 2049", poster: getImageUrl("/gaj.jpg"), rating: 7.5, release_date: "2017-10-04", mediaType: "movie", slug: "/movie/335984" },
   { id: 78, title: "Blade Runner", poster: getImageUrl("/p64.jpg"), rating: 7.9, release_date: "1982-06-25", mediaType: "movie", slug: "/movie/78" },
@@ -474,7 +472,6 @@ export const searchMovies: Movie[] = [
   { id: 628241, title: "The Shawshank Redemption", poster: getImageUrl("/9cqN.jpg"), rating: 8.7, release_date: "1994-09-22", mediaType: "movie", slug: "/movie/628241" },
   { id: 238, title: "The Godfather", poster: getImageUrl("/3bhj.jpg"), rating: 8.7, release_date: "1972-03-14", mediaType: "movie", slug: "/movie/238" },
   { id: 240, title: "The Godfather Part II", poster: getImageUrl("/amwomTuy7mK1WsL2PIx1OW793cG.jpg"), rating: 8.6, release_date: "1974-12-20", mediaType: "movie", slug: "/movie/240" },
-  { id: 496243, title: "Parasite", poster: getImageUrl("/7Ii.jpg"), rating: 8.5, release_date: "2019-05-30", mediaType: "movie", slug: "/movie/496243" },
   { id: 637, title: "Life Is Beautiful", poster: getImageUrl("/74h.jpg"), rating: 8.5, release_date: "1997-12-20", mediaType: "movie", slug: "/movie/637" },
   { id: 324857, title: "Spider-Man: Into the Spider-Verse", poster: getImageUrl("/ii8.jpg"), rating: 8.4, release_date: "2018-12-06", mediaType: "movie", slug: "/movie/324857" },
   { id: 393, title: "Avengers: Age of Ultron", poster: getImageUrl("/t90YrG8O9Q3B4C5D6F7G8H9J.jpg"), rating: 7.3, release_date: "2015-04-22", mediaType: "movie", slug: "/movie/393" },
@@ -1180,8 +1177,6 @@ export const searchMovies: Movie[] = [
   { id: 100384, title: "The Thief and the Cobbler", poster: getImageUrl("/thief1993.jpg"), rating: 7.2, release_date: "1993-09-23", mediaType: "movie", slug: "/movie/100384" },
   { id: 100385, title: "The Lion King", poster: getImageUrl("/lionking1994.jpg"), rating: 8.5, release_date: "1994-06-24", mediaType: "movie", slug: "/movie/100385" },
   { id: 100386, title: "Pulp Fiction", poster: getImageUrl("/pulp1994.jpg"), rating: 8.9, release_date: "1994-10-14", mediaType: "movie", slug: "/movie/100386" },
-  { id: 100387, title: "Forrest Gump", poster: getImageUrl("/forrest1994.jpg"), rating: 8.8, release_date: "1994-07-06", mediaType: "movie", slug: "/movie/100387" },
-  { id: 100388, title: "The Shawshank Redemption", poster: getImageUrl("/shawshank1994.jpg"), rating: 9.3, release_date: "1994-09-23", mediaType: "movie", slug: "/movie/100388" },
   { id: 100389, title: "Schindler's List", poster: getImageUrl("/schindler1993.jpg"), rating: 9.0, release_date: "1993-12-15", mediaType: "movie", slug: "/movie/100389" },
   { id: 100390, title: "Jurassic Park", poster: getImageUrl("/jurassic1993.jpg"), rating: 8.2, release_date: "1993-06-11", mediaType: "movie", slug: "/movie/100390" },
   { id: 100391, title: "Titanic", poster: getImageUrl("/titanic1997.jpg"), rating: 7.9, release_date: "1997-12-19", mediaType: "movie", slug: "/movie/100391" },
@@ -1189,7 +1184,6 @@ export const searchMovies: Movie[] = [
   { id: 100393, title: "The Silence of the Lambs", poster: getImageUrl("/silence1991.jpg"), rating: 8.6, release_date: "1991-02-14", mediaType: "movie", slug: "/movie/100393" },
   { id: 100394, title: "Terminator 2: Judgment Day", poster: getImageUrl("/t21991.jpg"), rating: 8.6, release_date: "1991-07-03", mediaType: "movie", slug: "/movie/100394" },
   { id: 100395, title: "Reservoir Dogs", poster: getImageUrl("/reservoir1992.jpg"), rating: 8.3, release_date: "1992-09-02", mediaType: "movie", slug: "/movie/100395" },
-  { id: 100396, title: "Fight Club", poster: getImageUrl("/fight1999.jpg"), rating: 8.8, release_date: "1999-10-15", mediaType: "movie", slug: "/movie/100396" },
   { id: 100397, title: "The Matrix", poster: getImageUrl("/matrix1999.jpg"), rating: 8.7, release_date: "1999-03-31", mediaType: "movie", slug: "/movie/100397" },
   { id: 100398, title: "Saving Private Ryan", poster: getImageUrl("/saving1998.jpg"), rating: 8.6, release_date: "1998-07-24", mediaType: "movie", slug: "/movie/100398" },
   { id: 100399, title: "American Beauty", poster: getImageUrl("/american1999.jpg"), rating: 8.3, release_date: "1999-09-15", mediaType: "movie", slug: "/movie/100399" },
@@ -1233,7 +1227,6 @@ export const searchMovies: Movie[] = [
   { id: 100435, title: "Mad Max: Fury Road", poster: getImageUrl("/madmax2015.jpg"), rating: 8.1, release_date: "2015-05-15", mediaType: "movie", slug: "/movie/100435" },
   { id: 100436, title: "La La Land", poster: getImageUrl("/lalaland2016.jpg"), rating: 8.0, release_date: "2016-12-25", mediaType: "movie", slug: "/movie/100436" },
   { id: 100437, title: "Get Out", poster: getImageUrl("/getout2017.jpg"), rating: 7.7, release_date: "2017-02-24", mediaType: "movie", slug: "/movie/100437" },
-  { id: 100438, title: "Parasite", poster: getImageUrl("/parasite2019.jpg"), rating: 8.5, release_date: "2019-11-01", mediaType: "movie", slug: "/movie/100438" },
   { id: 100439, title: "1917", poster: getImageUrl("/19172019.jpg"), rating: 8.2, release_date: "2019-12-25", mediaType: "movie", slug: "/movie/100439" },
   { id: 100440, title: "Everything Everywhere All at Once", poster: getImageUrl("/eeaao2022.jpg"), rating: 7.8, release_date: "2022-03-25", mediaType: "movie", slug: "/movie/100440" },
   { id: 100441, title: "Top Gun: Maverick", poster: getImageUrl("/maverick2022.jpg"), rating: 8.3, release_date: "2022-05-27", mediaType: "movie", slug: "/movie/100441" },
@@ -1339,7 +1332,6 @@ export const searchMovies: Movie[] = [
   { id: 100531, title: "Oldboy", poster: getImageUrl("/oldboy2003.jpg"), rating: 8.4, release_date: "2003-11-21", mediaType: "movie", slug: "/movie/100531" },
   { id: 100532, title: "Memories of Murder", poster: getImageUrl("/memories2003.jpg"), rating: 8.1, release_date: "2003-04-24", mediaType: "movie", slug: "/movie/100532" },
   { id: 100533, title: "The Host", poster: getImageUrl("/host2006.jpg"), rating: 7.1, release_date: "2006-07-27", mediaType: "movie", slug: "/movie/100533" },
-  { id: 100534, title: "Parasite", poster: getImageUrl("/parasite2019.jpg"), rating: 8.5, release_date: "2019-05-30", mediaType: "movie", slug: "/movie/100534" },
   { id: 100535, title: "Train to Busan", poster: getImageUrl("/busan2016.jpg"), rating: 7.6, release_date: "2016-07-20", mediaType: "movie", slug: "/movie/100535" },
   { id: 100536, title: "Burning", poster: getImageUrl("/burning2018.jpg"), rating: 7.5, release_date: "2018-05-17", mediaType: "movie", slug: "/movie/100536" },
   { id: 100537, title: "Minari", poster: getImageUrl("/minari2020.jpg"), rating: 7.4, release_date: "2020-02-26", mediaType: "movie", slug: "/movie/100537" },
@@ -1867,7 +1859,6 @@ export const searchMovies: Movie[] = [
   { id: 101021, title: "Moonlight", poster: getImageUrl("/moonlight2016.jpg"), rating: 7.4, release_date: "2016-11-18", mediaType: "movie", slug: "/movie/101021" },
   { id: 101022, title: "The Shape of Water", poster: getImageUrl("/shape2017.jpg"), rating: 7.3, release_date: "2017-12-08", mediaType: "movie", slug: "/movie/101022" },
   { id: 101023, title: "Green Book", poster: getImageUrl("/greenbook2018.jpg"), rating: 8.2, release_date: "2018-11-16", mediaType: "movie", slug: "/movie/101023" },
-  { id: 101024, title: "Parasite", poster: getImageUrl("/parasite2019.jpg"), rating: 8.5, release_date: "2019-11-08", mediaType: "movie", slug: "/movie/101024" },
   { id: 101025, title: "Nomadland", poster: getImageUrl("/nomadland2020.jpg"), rating: 7.3, release_date: "2020-12-04", mediaType: "movie", slug: "/movie/101025" },
   { id: 101026, title: "CODA", poster: getImageUrl("/coda2021.jpg"), rating: 7.7, release_date: "2021-08-13", mediaType: "movie", slug: "/movie/101026" },
   { id: 101027, title: "Everything Everywhere All at Once", poster: getImageUrl("/eeaao2022.jpg"), rating: 7.8, release_date: "2022-03-25", mediaType: "movie", slug: "/movie/101027" },
@@ -1955,7 +1946,6 @@ export const allMovies: Movie[] = [
   ...additionalMoviesPart5,
   ...additionalMoviesPart6,
   ...additionalMoviesPart7,
-  ...additionalMoviesPart8,
   ...tvShows,
   ...tvShowsPart2,
   ...tvShowsPart3,
