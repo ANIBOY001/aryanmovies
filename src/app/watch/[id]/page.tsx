@@ -10,9 +10,6 @@ import type { Movie } from '@/types/movie'
 
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
-  { name: '2Embed', url: 'https://www.2embed.cc/embed/movie/' },
-  { name: 'VidLink', url: 'https://vidlink.pro/movie/' },
-  { name: 'AutoEmbed', url: 'https://autoembed.cc/embed/movie/' },
 ]
 
 export default function WatchPage() {
@@ -113,7 +110,7 @@ export default function WatchPage() {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">If one server does not work, try another. Server 1 & 2 have fewer ads. VidKing may have more ads but sometimes better quality.</p>
+            <p className="text-text-muted text-xs mt-4">VidKing is currently the only available server. Some ads may appear - please use an ad blocker if needed.</p>
           </div>
 
           {isTvShow && (
