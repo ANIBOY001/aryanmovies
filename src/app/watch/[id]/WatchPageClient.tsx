@@ -10,6 +10,7 @@ import type { Movie } from '@/types/movie'
 
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
+  { name: 'pstream.net', url: 'https://pstream.net/embed/' },
 ]
 
 interface WatchPageClientProps {
@@ -109,7 +110,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">VidKing is currently the only available server. Some ads may appear - please use an ad blocker if needed.</p>
+            <p className="text-text-muted text-xs mt-4">If one server doesn't work, try the other. VidKing and pstream.net are available.</p>
           </div>
 
           {isTvShow && (
