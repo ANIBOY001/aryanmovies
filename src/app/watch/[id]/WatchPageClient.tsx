@@ -114,7 +114,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
         videoUrl = `https://vidlink.pro/movie/${movie.id}`
       }
       // Return wrapper page with VidLink URL as parameter
-      const basePath = process.env.GITHUB_PAGES === 'true' ? '/aryanmovies' : ''
+      const basePath = window.location.pathname.includes('/aryanmovies') ? '/aryanmovies' : ''
       return `${window.location.origin}${basePath}/player.html?url=${encodeURIComponent(videoUrl)}`
     }
     
