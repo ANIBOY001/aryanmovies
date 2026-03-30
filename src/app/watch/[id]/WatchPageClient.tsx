@@ -10,9 +10,7 @@ import type { Movie } from '@/types/movie'
 
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
-  { name: 'pstream.net', url: 'https://pstream.net/embed/' },
   { name: 'vidsrc.cc', url: 'https://vidsrc.cc/v2/embed/movie/' },
-  { name: '2Embed', url: 'https://www.2embed.cc/embed/' },
 ]
 
 interface WatchPageClientProps {
@@ -164,7 +162,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">Multiple servers available. If one has too many ads/popups, try another server. Using an ad blocker (uBlock Origin) is recommended.</p>
+            <p className="text-text-muted text-xs mt-4">VidKing and vidsrc.cc available. VidKing has anti-popup protection enabled. If one doesn't work, try the other.</p>
           </div>
 
           {isTvShow && (
