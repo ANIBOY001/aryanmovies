@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Play, Maximize, Minimize } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -11,6 +11,8 @@ import type { Movie } from '@/types/movie'
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
   { name: 'pstream.net', url: 'https://pstream.net/embed/' },
+  { name: 'vidsrc.cc', url: 'https://vidsrc.cc/v2/embed/movie/' },
+  { name: '2Embed', url: 'https://www.2embed.cc/embed/' },
 ]
 
 interface WatchPageClientProps {
@@ -23,12 +25,46 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
   const [selectedSeason, setSelectedSeason] = useState(1)
   const [selectedEpisode, setSelectedEpisode] = useState(1)
   const [isTvShow, setIsTvShow] = useState(false)
+  const [videoEnabled, setVideoEnabled] = useState(false)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  
+  // Block redirects and popups globally
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Override window.open to block popups
+      const originalOpen = window.open
+      window.open = function(...args: any[]) {
+        console.log('Blocked popup attempt')
+        return null
+      }
+      
+      // Block clicks on iframe that might be fake
+      const handleClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement
+        if (target.tagName === 'IFRAME') {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      }
+      
+      document.addEventListener('click', handleClick, true)
+      
+      return () => {
+        window.open = originalOpen
+        document.removeEventListener('click', handleClick, true)
+      }
+    }
+  }, [currentServer])
   
   useEffect(() => {
     if (movie.mediaType === 'tv') {
       setIsTvShow(true)
     }
   }, [movie])
+
+  const enableVideo = () => {
+    setVideoEnabled(true)
+  }
 
   const getEmbedUrl = () => {
     let baseUrl = SERVERS[currentServer].url
@@ -52,14 +88,32 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
   return (
     <div className="min-h-screen bg-background pt-16">
       <div id="video-player" className={`relative bg-black ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
-        <div className="aspect-video w-full">
+        <div className="aspect-video w-full relative">
+          {/* Click protection overlay - blocks fake clicks until user enables */}
+          {!videoEnabled && (
+            <div 
+              onClick={enableVideo}
+              className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 cursor-pointer hover:bg-black/50 transition-colors"
+            >
+              <div className="text-center">
+                <div className="w-20 h-20 bg-primary/90 rounded-full flex items-center justify-center mb-4 mx-auto hover:scale-110 transition-transform">
+                  <Play className="w-10 h-10 text-white ml-1" />
+                </div>
+                <p className="text-white font-semibold text-lg">Click to Play</p>
+                <p className="text-text-muted text-sm mt-2">Protects against popups/ads</p>
+              </div>
+            </div>
+          )}
           <iframe
+            ref={iframeRef}
             src={getEmbedUrl()}
             className="w-full h-full"
             allowFullScreen
             allow="autoplay; fullscreen; picture-in-picture"
             frameBorder="0"
             scrolling="no"
+            sandbox="allow-scripts allow-same-origin"
+            style={{ pointerEvents: videoEnabled ? 'auto' : 'none' }}
           />
         </div>
 
@@ -110,7 +164,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">If one server doesn't work, try the other. VidKing and pstream.net are available.</p>
+            <p className="text-text-muted text-xs mt-4">Multiple servers available. If one has too many ads/popups, try another server. Using an ad blocker (uBlock Origin) is recommended.</p>
           </div>
 
           {isTvShow && (
