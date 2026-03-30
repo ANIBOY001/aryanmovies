@@ -9,7 +9,8 @@ import {
   Home, 
   Film, 
   Tv,
-  ChevronDown
+  ChevronDown,
+  Clapperboard
 } from 'lucide-react'
 
 const navLinks = [
@@ -26,10 +27,42 @@ export default function Navbar() {
       <div className="px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-              Aryan<span className="text-primary">Movies</span>
-            </span>
+          <Link href="/" className="flex items-center gap-3">
+            {/* Film Reel Icon */}
+            <div className="relative">
+              <Clapperboard className="w-10 h-10 text-red-500" strokeWidth={1.5} />
+              <div className="absolute inset-0 w-10 h-10 bg-red-500/20 blur-xl rounded-full" />
+            </div>
+            
+            {/* Logo Text */}
+            <div className="flex flex-col">
+              <div className="flex items-baseline">
+                <span className="text-2xl md:text-3xl font-black tracking-tighter"
+                  style={{
+                    background: 'linear-gradient(180deg, #ff3333 0%, #cc0000 50%, #990000 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    textShadow: '0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3)',
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
+                  }}
+                >
+                  ARYAN
+                </span>
+                <span className="text-2xl md:text-3xl font-black tracking-tighter ml-0.5"
+                  style={{
+                    background: 'linear-gradient(180deg, #ffffff 0%, #e0e0e0 50%, #b0b0b0 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))'
+                  }}
+                >
+                  MOVIES
+                </span>
+              </div>
+              <span className="text-[8px] md:text-[10px] font-bold tracking-[0.2em] text-white/60 uppercase">
+                Watch Free Movies & TV Shows
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
