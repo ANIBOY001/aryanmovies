@@ -28,6 +28,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
   const [videoEnabled, setVideoEnabled] = useState(false)
   const [watchStartTime, setWatchStartTime] = useState<number | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
   const { addToHistory, updateProgress } = useWatchHistory()
   
   // Block redirects and popups globally
@@ -125,6 +126,39 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
     return baseUrl + movie.id
   }
 
+  // Dynamic iframe injection for VidLink (bypasses sandbox detection)
+  useEffect(() => {
+    if (!videoEnabled || !videoContainerRef.current) return
+    
+    const server = SERVERS[currentServer]
+    const container = videoContainerRef.current
+    
+    // Clear existing content
+    container.innerHTML = ''
+    
+    // Create iframe dynamically
+    const iframe = document.createElement('iframe')
+    iframe.src = getEmbedUrl()
+    iframe.className = 'w-full h-full'
+    iframe.allowFullscreen = true
+    iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture')
+    iframe.setAttribute('frameborder', '0')
+    iframe.setAttribute('scrolling', 'no')
+    
+    // Apply sandbox only to non-VidLink servers
+    if (server.name !== 'VidLink') {
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin')
+    }
+    
+    iframe.style.pointerEvents = 'auto'
+    
+    container.appendChild(iframe)
+    
+    return () => {
+      container.innerHTML = ''
+    }
+  }, [videoEnabled, currentServer, movie.id, isTvShow, selectedSeason, selectedEpisode])
+
   const handleFullscreen = () => {
     const player = document.getElementById('video-player')
     if (!isFullscreen) {
@@ -154,17 +188,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
               </div>
             </div>
           )}
-          <iframe
-            ref={iframeRef}
-            src={getEmbedUrl()}
-            className="w-full h-full"
-            allowFullScreen
-            allow="autoplay; fullscreen; picture-in-picture"
-            frameBorder="0"
-            scrolling="no"
-            {...(SERVERS[currentServer].name !== 'VidLink' && { sandbox: 'allow-scripts allow-same-origin' })}
-            style={{ pointerEvents: videoEnabled ? 'auto' : 'none' }}
-          />
+          <div ref={videoContainerRef} className="w-full h-full" />
         </div>
 
         <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent">
