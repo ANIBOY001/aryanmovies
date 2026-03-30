@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation'
 import { allMovies } from '@/data/movies'
 import MovieCard from '@/components/MovieCard'
 import type { Movie } from '@/types/movie'
+import { useWatchHistory } from '@/contexts/WatchHistoryContext'
 
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
@@ -24,7 +25,9 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
   const [selectedEpisode, setSelectedEpisode] = useState(1)
   const [isTvShow, setIsTvShow] = useState(false)
   const [videoEnabled, setVideoEnabled] = useState(false)
+  const [watchStartTime, setWatchStartTime] = useState<number | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const { addToHistory, updateProgress } = useWatchHistory()
   
   // Block redirects and popups globally
   useEffect(() => {
@@ -59,6 +62,40 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
       setIsTvShow(true)
     }
   }, [movie])
+
+  // Track watch progress
+  useEffect(() => {
+    if (videoEnabled && !watchStartTime) {
+      // Started watching - add to history
+      const startTime = Date.now()
+      setWatchStartTime(startTime)
+      
+      addToHistory({
+        id: movie.id,
+        title: movie.title,
+        poster: movie.poster || '',
+        backdrop: movie.backdrop || movie.poster,
+        rating: movie.rating,
+        mediaType: movie.mediaType || 'movie',
+        progress: 5, // Just started - 5%
+        season: isTvShow ? selectedSeason : undefined,
+        episode: isTvShow ? selectedEpisode : undefined,
+      })
+
+      // Simulate progress updates every 30 seconds
+      const progressInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime
+        const minutes = elapsed / 1000 / 60
+        // Assume average movie is 2 hours (120 min), TV episode 45 min
+        const totalMinutes = isTvShow ? 45 : 120
+        const progress = Math.min(95, Math.round((minutes / totalMinutes) * 100))
+        
+        updateProgress(movie.id, progress)
+      }, 30000) // Update every 30 seconds
+
+      return () => clearInterval(progressInterval)
+    }
+  }, [videoEnabled, watchStartTime, movie, addToHistory, updateProgress, isTvShow, selectedSeason, selectedEpisode])
 
   const enableVideo = () => {
     setVideoEnabled(true)

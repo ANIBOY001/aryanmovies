@@ -2,6 +2,7 @@ import { Movie } from '@/types/movie'
 import Link from 'next/link'
 import { Play, Plus, Star, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
+import { useWatchHistory } from '@/contexts/WatchHistoryContext'
 
 interface MovieCardProps {
   movie: Movie
@@ -9,6 +10,7 @@ interface MovieCardProps {
 
 export default function MovieCard({ movie }: MovieCardProps) {
   const [imgError, setImgError] = useState(false)
+  const { addToHistory } = useWatchHistory()
   
   // Build image URL - prefer direct TMDB, fallback to poster field
   const getImageUrl = () => {
@@ -27,12 +29,25 @@ export default function MovieCard({ movie }: MovieCardProps) {
   const imageUrl = getImageUrl()
   const hasValidImage = imageUrl && !imgError
   
+  // Handle click - add to watch history
+  const handleClick = () => {
+    addToHistory({
+      id: movie.id,
+      title: movie.title,
+      poster: imageUrl || '',
+      backdrop: movie.backdrop || imageUrl,
+      rating: movie.rating,
+      mediaType: movie.mediaType || 'movie',
+      progress: 0,
+    })
+  }
+  
   // Debug: log what's happening
   console.log(`Movie ${movie.title}: imageUrl=${imageUrl?.substring(0, 50)}, imgError=${imgError}, hasValid=${hasValidImage}`)
 
   return (
     <div className="movie-card group flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px]">
-      <Link href={`/watch/${movie.id}`}>
+      <Link href={`/watch/${movie.id}`} onClick={handleClick}>
         <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-secondary">
           {/* Poster Image */}
           {hasValidImage ? (

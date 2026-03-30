@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero'
 import MovieSection from '@/components/MovieSection'
+import ContinueWatching from '@/components/ContinueWatching'
 import { 
   genreSections, 
   streamingSections, 
@@ -13,6 +14,8 @@ export default function Home() {
   return (
     <div className="bg-background">
       <Hero />
+      
+      <ContinueWatching />
       
       <div className="px-4 sm:px-6 lg:px-8 xl:px-12 pb-12 space-y-8">
         {/* Popular Movies */}
