@@ -1,5 +1,3 @@
-import { Clapperboard } from 'lucide-react'
-
 export default function Icon() {
   return (
     <svg
