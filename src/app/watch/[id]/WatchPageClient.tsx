@@ -12,6 +12,7 @@ import { useWatchHistory } from '@/contexts/WatchHistoryContext'
 const SERVERS = [
   { name: 'VidKing', url: 'https://www.vidking.net/embed/movie/' },
   { name: 'vidsrc.cc', url: 'https://vidsrc.cc/v2/embed/movie/' },
+  { name: 'VidLink', url: 'https://vidlink.pro/movie/' },
 ]
 
 interface WatchPageClientProps {
@@ -199,7 +200,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">VidKing and vidsrc.cc available. VidKing has anti-popup protection enabled. If one doesn't work, try the other.</p>
+            <p className="text-text-muted text-xs mt-4">3 servers available: VidKing (HD, anti-popup), vidsrc.cc, and VidLink. Try different servers if one doesn't work.</p>
           </div>
 
           {isTvShow && (
