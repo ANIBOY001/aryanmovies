@@ -103,7 +103,23 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
   }
 
   const getEmbedUrl = () => {
-    let baseUrl = SERVERS[currentServer].url
+    const server = SERVERS[currentServer]
+    let videoUrl: string
+    
+    if (server.name === 'VidLink') {
+      // VidLink uses direct URLs without /movie/ or /tv/ prefix structure
+      if (isTvShow) {
+        videoUrl = `https://vidlink.pro/tv/${movie.id}/${selectedSeason}/${selectedEpisode}`
+      } else {
+        videoUrl = `https://vidlink.pro/movie/${movie.id}`
+      }
+      // Return wrapper page with VidLink URL as parameter
+      const basePath = process.env.GITHUB_PAGES === 'true' ? '/aryanmovies' : ''
+      return `${window.location.origin}${basePath}/player.html?url=${encodeURIComponent(videoUrl)}`
+    }
+    
+    // Other servers use normal embed
+    let baseUrl = server.url
     if (isTvShow) {
       baseUrl = baseUrl.replace('/movie/', '/tv/')
       return baseUrl + movie.id + '/' + selectedSeason + '/' + selectedEpisode
