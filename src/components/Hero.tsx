@@ -178,10 +178,6 @@ export default function Hero() {
                 <Play className="w-5 h-5 fill-current" />
                 Play Now
               </Link>
-              <button className="btn-secondary">
-                <Info className="w-5 h-5" />
-                More Info
-              </button>
             </div>
           </div>
         </div>

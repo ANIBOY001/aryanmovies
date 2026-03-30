@@ -13,7 +13,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-text-muted">
-              Welcome to AryanMovies - your ultimate destination for movies, TV shows, and anime streaming.
+              Your ultimate destination for movies and TV shows streaming. Watch free content online.
             </p>
           </div>
 
@@ -23,8 +23,6 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-text-muted">
               <li><Link href="/movies" className="hover:text-white transition-colors">Movies</Link></li>
               <li><Link href="/tv" className="hover:text-white transition-colors">TV Shows</Link></li>
-              <li><Link href="/anime" className="hover:text-white transition-colors">Anime</Link></li>
-              <li><Link href="/livestream" className="hover:text-white transition-colors">Livestream</Link></li>
             </ul>
           </div>
 
@@ -32,20 +30,16 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Features</h3>
             <ul className="space-y-2 text-sm text-text-muted">
-              <li><Link href="/watchparty" className="hover:text-white transition-colors">Watch Party</Link></li>
-              <li><Link href="/history" className="hover:text-white transition-colors">Watch History</Link></li>
-              <li><Link href="/watchlist" className="hover:text-white transition-colors">My Watchlist</Link></li>
-              <li><Link href="/api" className="hover:text-white transition-colors">API Documentation</Link></li>
+              <li><Link href="/" className="hover:text-white transition-colors">Watch History</Link></li>
+              <li><Link href="/search" className="hover:text-white transition-colors">Search</Link></li>
             </ul>
           </div>
 
-          {/* Personal */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Personal</h3>
+            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-text-muted">
-              <li><Link href="/account" className="hover:text-white transition-colors">My Account</Link></li>
-              <li><Link href="/settings" className="hover:text-white transition-colors">Settings</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
             </ul>
           </div>
         </div>
