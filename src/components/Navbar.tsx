@@ -67,12 +67,6 @@ export default function Navbar() {
                 <div className="bg-surface border border-white/10 rounded-lg shadow-xl py-2 min-w-[160px]">
                   <Link href="/movies" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Movies</Link>
                   <Link href="/tv" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">TV Shows</Link>
-                  <div className="border-t border-white/10 my-1" />
-                  <Link href="/genre/action" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Action</Link>
-                  <Link href="/genre/comedy" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Comedy</Link>
-                  <Link href="/genre/drama" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Drama</Link>
-                  <Link href="/genre/horror" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Horror</Link>
-                  <Link href="/genre/scifi" className="block px-4 py-2 text-sm text-white/80 hover:text-white hover:bg-white/5">Sci-Fi</Link>
                 </div>
               </div>
             </div>
