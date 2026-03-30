@@ -8,9 +8,7 @@ import {
   X, 
   Home, 
   Film, 
-  Tv, 
-  Radio, 
-  Users,
+  Tv,
   ChevronDown
 } from 'lucide-react'
 
@@ -18,8 +16,6 @@ const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/movies', label: 'Movies', icon: Film },
   { href: '/tv', label: 'TV Shows', icon: Tv },
-  { href: '/livestream', label: 'Livestream', icon: Radio },
-  { href: '/watchparty', label: 'Watch Party', icon: Users },
 ]
 
 export default function Navbar() {
