@@ -159,6 +159,46 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
     }
   }, [videoEnabled, currentServer, movie.id, isTvShow, selectedSeason, selectedEpisode])
 
+  // Aggressive popup blocking for VidLink
+  useEffect(() => {
+    if (!videoEnabled || SERVERS[currentServer].name !== 'VidLink') return
+    
+    // Block all window.open attempts
+    const blockPopups = () => {
+      if (typeof window !== 'undefined') {
+        // Override window.open
+        window.open = function() {
+          console.log('Blocked popup from VidLink')
+          return null
+        }
+        
+        // Block location changes
+        const originalAssign = window.location.assign
+        window.location.assign = function(url: string | URL) {
+          console.log('Blocked navigation to:', url)
+          return undefined
+        }
+        
+        // Block replace
+        const originalReplace = window.location.replace  
+        window.location.replace = function(url: string | URL) {
+          console.log('Blocked replace to:', url)
+          return undefined
+        }
+      }
+    }
+    
+    // Run immediately and after a delay (in case VidLink scripts load later)
+    blockPopups()
+    const timer = setTimeout(blockPopups, 1000)
+    const timer2 = setTimeout(blockPopups, 3000)
+    
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(timer2)
+    }
+  }, [videoEnabled, currentServer])
+
   const handleFullscreen = () => {
     const player = document.getElementById('video-player')
     if (!isFullscreen) {
@@ -188,7 +228,18 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
               </div>
             </div>
           )}
-          <div ref={videoContainerRef} className="w-full h-full" />
+          <div ref={videoContainerRef} className="w-full h-full relative">
+            {/* Click-capturing overlay for VidLink to prevent popups */}
+            {videoEnabled && SERVERS[currentServer].name === 'VidLink' && (
+              <div 
+                className="absolute inset-0 z-5"
+                style={{ 
+                  pointerEvents: 'none',
+                  background: 'transparent'
+                }}
+              />
+            )}
+          </div>
         </div>
 
         <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent">
