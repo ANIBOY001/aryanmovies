@@ -3,63 +3,34 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Play, Info, ChevronLeft, ChevronRight } from 'lucide-react'
+import { allMovies } from '@/data/movies'
+import type { Movie } from '@/types/movie'
 
-const featuredContent = [
-  {
-    id: 1232497,
-    title: "Send Help",
-    overview: "A gripping thriller that will keep you on the edge of your seat. When a group of friends finds themselves stranded in an isolated location, they must fight for survival against unimaginable odds.",
-    backdrop: "https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw1280%2FgCmfeKmEAZBP5gcXpiqb0gii9rS.jpg&output=webp&q=65&n=-1",
-    rating: 7.1,
-    year: "2026",
-    genre: "Horror / Thriller",
-    duration: "1h 42m"
-  },
-  {
-    id: 1297842,
-    title: "GOAT",
-    overview: "A story of friendship, rivalry, and redemption in the world of professional sports. Two athletes push each other to their limits while discovering what truly matters in life.",
-    backdrop: "https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw1280%2FwfuqMlaExcoYiUEvKfVpUTt1v4u.jpg&output=webp&q=65&n=-1",
-    rating: 7.7,
-    year: "2026",
-    genre: "Drama / Sport",
-    duration: "2h 15m"
-  },
-  {
-    id: 1084242,
-    title: "Zootopia 2",
-    overview: "Judy Hopps and Nick Wilde return for another adventure in the bustling animal metropolis. This time, they're solving a mystery that threatens to tear the city apart.",
-    backdrop: "https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw1280%2FoJ7g2CifqpStmoYQyaLQgEU32qO.jpg&output=webp&q=65&n=-1",
-    rating: 7.6,
-    year: "2025",
-    genre: "Animation / Adventure",
-    duration: "1h 48m"
-  },
-  {
-    id: 1290821,
-    title: "Shelter",
-    overview: "In a post-apocalyptic world, survivors must band together in an underground shelter to protect humanity's last hope while facing threats from both outside and within.",
-    backdrop: "https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw1280%2FbuPFnHZ3xQy6vZEHxbHgL1Pc6CR.jpg&output=webp&q=65&n=-1",
-    rating: 6.7,
-    year: "2026",
-    genre: "Sci-Fi / Thriller",
-    duration: "2h 5m"
-  },
-  {
-    id: 1327819,
-    title: "Hoppers",
-    overview: "A hilarious animated comedy about a team of elite agents who happen to be frogs. They leap into action to save the world from an evil genius with a dastardly plan.",
-    backdrop: "https://wsrv.nl/?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw1280%2FxjtWQ2CL1mpmMNwuU5HeS4Iuwuu.jpg&output=webp&q=65&n=-1",
-    rating: 7.6,
-    year: "2026",
-    genre: "Animation / Comedy",
-    duration: "1h 35m"
-  }
-]
+// Function to get random movies from the database
+const getRandomMovies = (movies: Movie[], count: number): Movie[] => {
+  const shuffled = [...movies].sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, count)
+}
+
+// Transform Movie type to hero format
+const formatMovieForHero = (movie: Movie) => ({
+  id: movie.id,
+  title: movie.title,
+  overview: movie.overview || 'Watch this amazing movie online for free.',
+  backdrop: movie.backdrop || movie.poster,
+  rating: movie.rating,
+  year: movie.release_date?.split('-')[0] || '2024',
+  genre: movie.genre || 'Movie',
+  duration: '2h 0m'
+})
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [featuredContent, setFeaturedContent] = useState(() => {
+    const randomMovies = getRandomMovies(allMovies, 5)
+    return randomMovies.map(formatMovieForHero)
+  })
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % featuredContent.length)
