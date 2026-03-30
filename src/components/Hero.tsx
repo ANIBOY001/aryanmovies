@@ -3,34 +3,66 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Play, Info, ChevronLeft, ChevronRight } from 'lucide-react'
-import { allMovies } from '@/data/movies'
-import type { Movie } from '@/types/movie'
 
-// Function to get random movies from the database
-const getRandomMovies = (movies: Movie[], count: number): Movie[] => {
-  const shuffled = [...movies].sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, count)
-}
-
-// Transform Movie type to hero format
-const formatMovieForHero = (movie: Movie) => ({
-  id: movie.id,
-  title: movie.title,
-  overview: movie.overview || 'Watch this amazing movie online for free.',
-  backdrop: movie.backdrop || movie.poster,
-  rating: movie.rating,
-  year: movie.release_date?.split('-')[0] || '2024',
-  genre: movie.genre || 'Movie',
-  duration: '2h 0m'
-})
+// Featured content using real movie IDs from the database
+const featuredContent = [
+  {
+    id: 1198994,
+    title: "Send Help",
+    overview: "A gripping thriller that will keep you on the edge of your seat. When a group of friends finds themselves stranded in an isolated location, they must fight for survival against unimaginable odds.",
+    backdrop: "https://image.tmdb.org/t/p/w1280/gCmfeKmEAZBP5gcXpiqb0gii9rS.jpg",
+    rating: 7.1,
+    year: "2026",
+    genre: "Horror / Thriller",
+    duration: "1h 42m"
+  },
+  {
+    id: 1297842,
+    title: "GOAT",
+    overview: "A story of friendship, rivalry, and redemption in the world of professional sports. Two athletes push each other to their limits while discovering what truly matters in life.",
+    backdrop: "https://image.tmdb.org/t/p/w1280/wfuqMlaExcoYiUEvKfVpUTt1v4u.jpg",
+    rating: 7.7,
+    year: "2026",
+    genre: "Drama / Sport",
+    duration: "2h 15m"
+  },
+  {
+    id: 1084242,
+    title: "Zootopia 2",
+    overview: "Judy Hopps and Nick Wilde return for another adventure in the bustling animal metropolis. This time, they're solving a mystery that threatens to tear the city apart.",
+    backdrop: "https://image.tmdb.org/t/p/w1280/oJ7g2CifqpStmoYQyaLQgEU32qO.jpg",
+    rating: 7.6,
+    year: "2025",
+    genre: "Animation / Adventure",
+    duration: "1h 48m"
+  },
+  {
+    id: 1290821,
+    title: "Shelter",
+    overview: "In a post-apocalyptic world, survivors must band together in an underground shelter to protect humanity's last hope while facing threats from both outside and within.",
+    backdrop: "https://image.tmdb.org/t/p/w1280/buPFnHZ3xQy6vZEHxbHgL1Pc6CR.jpg",
+    rating: 6.7,
+    year: "2026",
+    genre: "Sci-Fi / Thriller",
+    duration: "2h 5m"
+  },
+  {
+    id: 1327819,
+    title: "Hoppers",
+    overview: "A hilarious animated comedy about a team of elite agents who happen to be frogs. They leap into action to save the world from an evil genius with a dastardly plan.",
+    backdrop: "https://image.tmdb.org/t/p/w1280/xjtWQ2CL1mpmMNwuU5HeS4Iuwuu.jpg",
+    rating: 7.6,
+    year: "2026",
+    genre: "Animation / Comedy",
+    duration: "1h 35m"
+  }
+]
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const [featuredContent, setFeaturedContent] = useState(() => {
-    const randomMovies = getRandomMovies(allMovies, 5)
-    return randomMovies.map(formatMovieForHero)
-  })
+
+  const current = featuredContent[currentIndex]
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % featuredContent.length)
@@ -53,8 +85,6 @@ export default function Hero() {
     const interval = setInterval(nextSlide, 5000)
     return () => clearInterval(interval)
   }, [isAutoPlaying, nextSlide])
-
-  const current = featuredContent[currentIndex]
 
   return (
     <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
