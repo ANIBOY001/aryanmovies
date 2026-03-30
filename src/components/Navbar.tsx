@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { 
   Search, 
   Menu, 
@@ -29,18 +28,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const router = useRouter()
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
-    } else {
-      router.push('/search')
-    }
-  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
@@ -69,28 +56,14 @@ export default function Navbar() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            {/* Search */}
-            <form onSubmit={handleSearch} className={`relative ${isSearchOpen ? 'block' : 'hidden md:block'}`}>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search..."
-                className={`bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-white/40 transition-all ${
-                  isSearchOpen ? 'w-48 md:w-64' : 'w-32 md:w-48'
-                }`}
-              />
-              <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2">
-                <Search className="w-4 h-4 text-white/50 hover:text-white transition" />
-              </button>
-            </form>
-            
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
+            {/* Search Button - Navigates to search page */}
+            <Link 
+              href="/search" 
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full px-4 py-2 text-sm text-white transition-all"
             >
-              <Search className="w-5 h-5" />
-            </button>
+              <Search className="w-4 h-4" />
+              <span className="hidden md:inline">Search...</span>
+            </Link>
 
             {/* Browse Dropdown */}
             <div className="hidden md:block relative group">
