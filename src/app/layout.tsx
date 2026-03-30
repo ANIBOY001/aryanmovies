@@ -11,9 +11,6 @@ export const metadata: Metadata = {
   title: 'AryanMovies - Watch Free TV Shows Online, Watch Free Movies Online',
   description: 'Watch Free TV Shows Online, Watch Free Movies Online',
   keywords: 'aryanmovies, watch free movies, free movies to watch online, watch movies online free, free movies streaming, free movies full, free movies download, watch movies hd, movies to watch, plus, ver, assistir, filmes, series, seriados, online, gratis, torrent, legendado, dublados, Series, HD, 720p, 1080p, 4k, cinema',
-  icons: {
-    icon: { url: '/favicon.ico', sizes: 'any' },
-  },
   openGraph: {
     title: 'AryanMovies',
     description: 'Watch Free TV Shows Online, Watch Free Movies Online',
