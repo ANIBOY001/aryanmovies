@@ -113,9 +113,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
       } else {
         videoUrl = `https://vidlink.pro/movie/${movie.id}`
       }
-      // Return wrapper page with VidLink URL as parameter
-      const basePath = window.location.pathname.includes('/aryanmovies') ? '/aryanmovies' : ''
-      return `${window.location.origin}${basePath}/player.html?url=${encodeURIComponent(videoUrl)}`
+      return videoUrl
     }
     
     // Other servers use normal embed
@@ -164,7 +162,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
             allow="autoplay; fullscreen; picture-in-picture"
             frameBorder="0"
             scrolling="no"
-            sandbox="allow-scripts allow-same-origin"
+            {...(SERVERS[currentServer].name !== 'VidLink' && { sandbox: 'allow-scripts allow-same-origin' })}
             style={{ pointerEvents: videoEnabled ? 'auto' : 'none' }}
           />
         </div>
@@ -216,7 +214,7 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
                 </button>
               ))}
             </div>
-            <p className="text-text-muted text-xs mt-4">3 servers available: VidKing (HD, anti-popup), vidsrc.cc, and VidLink. Try different servers if one doesn't work.</p>
+            <p className="text-text-muted text-xs mt-4">VidKing and vidsrc.cc have anti-popup protection. VidLink works but may show ads - use an ad blocker. Try different servers if one doesn't work.</p>
           </div>
 
           {isTvShow && (
