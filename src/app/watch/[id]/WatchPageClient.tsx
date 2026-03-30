@@ -107,12 +107,15 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
     const server = SERVERS[currentServer]
     let videoUrl: string
     
+    // Use imdbId if available, otherwise fall back to id
+    const streamingId = movie.imdbId || movie.id
+    
     if (server.name === 'VidLink') {
       // VidLink uses direct URLs without /movie/ or /tv/ prefix structure
       if (isTvShow) {
-        videoUrl = `https://vidlink.pro/tv/${movie.id}/${selectedSeason}/${selectedEpisode}`
+        videoUrl = `https://vidlink.pro/tv/${streamingId}/${selectedSeason}/${selectedEpisode}`
       } else {
-        videoUrl = `https://vidlink.pro/movie/${movie.id}`
+        videoUrl = `https://vidlink.pro/movie/${streamingId}`
       }
       return videoUrl
     }
@@ -121,9 +124,9 @@ export default function WatchPageClient({ movie }: WatchPageClientProps) {
     let baseUrl = server.url
     if (isTvShow) {
       baseUrl = baseUrl.replace('/movie/', '/tv/')
-      return baseUrl + movie.id + '/' + selectedSeason + '/' + selectedEpisode
+      return baseUrl + streamingId + '/' + selectedSeason + '/' + selectedEpisode
     }
-    return baseUrl + movie.id
+    return baseUrl + streamingId
   }
 
   // Dynamic iframe injection for VidLink (bypasses sandbox detection)

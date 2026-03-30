@@ -48,7 +48,6 @@ export const tvShowsPart2: Movie[] = [
   { id: 200136, title: "The L Word", poster: getImageUrl("/lword2004.jpg"), rating: 7.6, release_date: "2004-01-18", mediaType: "tv", slug: "/tv/200136" },
   { id: 200137, title: "Weeds", poster: getImageUrl("/weeds2005.jpg"), rating: 7.9, release_date: "2005-08-07", mediaType: "tv", slug: "/tv/200137" },
   { id: 200138, title: "Big Love", poster: getImageUrl("/biglove2006.jpg"), rating: 7.3, release_date: "2006-03-12", mediaType: "tv", slug: "/tv/200138" },
-  { id: 200139, title: "Dexter", poster: getImageUrl("/dexter2006.jpg"), rating: 8.6, release_date: "2006-10-01", mediaType: "tv", slug: "/tv/200139" },
   { id: 200140, title: "Friday Night Lights", poster: getImageUrl("/fridaynight2006.jpg"), rating: 8.4, release_date: "2006-10-03", mediaType: "tv", slug: "/tv/200140" },
   { id: 200141, title: "Heroes", poster: getImageUrl("/heroes2006.jpg"), rating: 7.5, release_date: "2006-09-25", mediaType: "tv", slug: "/tv/200141" },
   { id: 200142, title: "Ugly Betty", poster: getImageUrl("/uglybetty2006.jpg"), rating: 7.3, release_date: "2006-09-28", mediaType: "tv", slug: "/tv/200142" },

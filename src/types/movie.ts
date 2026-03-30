@@ -1,5 +1,6 @@
 export interface Movie {
   id: number
+  imdbId?: string  // IMDB ID for streaming servers (e.g., "tt0137523")
   title: string
   poster?: string
   poster_path?: string

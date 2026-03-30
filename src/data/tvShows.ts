@@ -39,7 +39,7 @@ export const tvShows: Movie[] = [
   { id: 200027, title: "The Twilight Zone", poster: getImageUrl("/twilightzone1959.jpg"), rating: 9.0, release_date: "1959-10-02", mediaType: "tv", slug: "/tv/200027" },
   { id: 200028, title: "Twin Peaks", poster: getImageUrl("/twinpeaks1990.jpg"), rating: 8.8, release_date: "1990-04-08", mediaType: "tv", slug: "/tv/200028" },
   { id: 200029, title: "Lost", poster: getImageUrl("/lost2004.jpg"), rating: 8.3, release_date: "2004-09-22", mediaType: "tv", slug: "/tv/200029" },
-  { id: 200030, title: "Dexter", poster: getImageUrl("/dexter2006.jpg"), rating: 8.6, release_date: "2006-10-01", mediaType: "tv", slug: "/tv/200030" },
+  { id: 200030, imdbId: "tt0773262", title: "Dexter", poster: getImageUrl("/58QW7v4EWSBeyr4zNLDbj8QNYOa.jpg"), rating: 8.2, release_date: "2006-10-01", mediaType: "tv", slug: "/tv/200030" },
   { id: 200031, title: "House of Cards", poster: getImageUrl("/houseofcards2013.jpg"), rating: 8.6, release_date: "2013-02-01", mediaType: "tv", slug: "/tv/200031" },
   { id: 200032, title: "Mindhunter", poster: getImageUrl("/mindhunter2017.jpg"), rating: 8.6, release_date: "2017-10-13", mediaType: "tv", slug: "/tv/200032" },
   { id: 200033, title: "Narcos", poster: getImageUrl("/narcos2015.jpg"), rating: 8.8, release_date: "2015-08-28", mediaType: "tv", slug: "/tv/200033" },
